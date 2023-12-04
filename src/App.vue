@@ -1,8 +1,8 @@
 <script setup>
-import headerVue from './components/header.vue'
+import HeaderComponent from './components/headerComponent.vue'
 </script>
 
 <template>
-    <headerVue />
+    <HeaderComponent></HeaderComponent>
 </template>
 

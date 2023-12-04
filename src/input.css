@@ -13,6 +13,10 @@
     .newUrl-btn {
         @apply px-6 py-2 text-base text-center text-white rounded cursor-pointer bg-primaryCyan;
     }
+
+    .listNav {
+        @apply hidden items-center w-full mx-4 mt-4 rounded-lg bg-primaryDarkViolet md:bg-inherit md:backdrop-blur-0 md:flex md:w-auto md:order-1 md:rounded-none md:mx-0
+    }
 }
 
 .resShort {
