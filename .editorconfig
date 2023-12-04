@@ -1,0 +1,57 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = crlf
+insert_final_newline = true
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*]
+charset = utf-8
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+# # 4 space indentation
+# [*.py]
+# indent_style = space
+# indent_size = 4
+
+# # Tab indentation (no size specified)
+# [Makefile]
+# indent_style = tab
+
+# Indentation override for all JS under lib directory
+# [lib/**.js]
+# indent_style = space
+# indent_size = 2
+
+# Matches the exact files either package.json or .travis.yml
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+[*.html]
+charset = utf-8
+indent_size = 4
+indent_style = space
+
+# root = true
+
+# [*]
+ 
+# indent_size = 4
+# indent_style = space
+# end_of_line = crlf
+# insert_final_newline = true
+
+#  // Set root to true: A search for .editorconfig files will stop if the root file path is reached or an EditorConfig file with root=true is found.
+ 
+#  //[*]: Except for path selectors, it matches any string of characters.
+ 
+#  //indent_size: Indent size is set to 4. 
+#  //Indent_style: set to space
+#  //end_of_line: Set to lf
