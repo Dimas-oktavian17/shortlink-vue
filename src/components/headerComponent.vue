@@ -1,5 +1,8 @@
 <script setup>
 import { ref, reactive } from 'vue'
+defineProps({
+    title: String
+})
 const nav = reactive([
     {
         id: 2,
@@ -17,9 +20,6 @@ const nav = reactive([
         link: '#resources'
     },
 ])
-defineProps({
-    title: String,
-})
 const hamburger = ref(true)
 </script>
 <template>
@@ -28,8 +28,8 @@ const hamburger = ref(true)
             <div
                 class="fixed container backdrop-blur-md w-[95%] z-[999]  mx-auto flex flex-wrap items-center md:justify-between justify-around rounded-xl pb-8 lg:w-[98%]">
                 <a href="#beranda" class="flex">
-                    <span
-                        class="self-center pl-4 text-4xl font-semibold whitespace-nowrap text-primaryDarkViolet">{{ title }}</span>
+                    <span class="self-center pl-4 text-4xl font-semibold whitespace-nowrap text-primaryDarkViolet">{{ title
+                    }}</span>
                 </a>
                 <!-- btn-logout -->
                 <div class="flex md:order-2">
@@ -51,19 +51,17 @@ const hamburger = ref(true)
                         aria-controls="mobile-menu-3" aria-expanded="false" id="hamburger">
                         <span class="sr-only">Open main menu</span>
                         <div class="flex flex-col items-end ">
-                            <p :class="{ 'bg-netralGrayishViolet transition duration-300 ease-in-out w-[30px] rotate-0 h-1 dark:bg-primary2 dark:active:bg-primary2hover  ': hamburger }"
-                                class=" bg-netralGrayishViolet transition duration-300
-                                ease-in-out w-[30px] h-1 rotate-45 dark:bg-primary2 dark:active:bg-primary2hover">
+                            <p
+                                :class="[hamburger ? 'bg-netralGrayishViolet transition-all w-[30px] h-1' : 'bg-netralGrayishViolet transition-all w-[30px] h-1 rotate-45 origin-bottom-left']">
 
                             </p>
-                            <p :class="{
-                                'bg-netralGrayishViolet transition duration-300 ease-in-out w-[15px] scale-0 rotate-0 origin-bottom-left h-1 dark:bg-primary2 dark:active:bg-primary2hover'
-                                    : hamburger
-                            }
-                                ">
+                            <p
+                                :class="[hamburger ? 'bg-netralGrayishViolet transition-all w-[30px] h-1 my-1' : 'bg-netralGrayishViolet transition-all w-[30px] h-1 scale-0 origin-center']">
+
                             </p>
                             <p
-                                :class="{ 'bg-netralGrayishViolet transition duration-300 ease-in-out w-[15px] rotate-45 origin-top-right h-1 dark:bg-primary2 dark:active:bg-primary2hover': hamburger }">
+                                :class="[hamburger ? 'bg-netralGrayishViolet transition-all w-[30px] h-1' : 'bg-netralGrayishViolet transition-all w-[30px] h-1 -rotate-45 origin-center']">
+
                             </p>
                         </div>
                         <svg class="hidden w-6 h-6" id="hamburger" fill="currentColor" viewBox="0 0 20 20"
@@ -83,7 +81,7 @@ const hamburger = ref(true)
                 <div :class="{ listNav: hamburger }" id="mobile-menu-3">
                     <ul
                         class="flex flex-col items-center mt-4 md:mr-72 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-                        <li v-for="(  { link, title, id }  ) in   nav  " :key="id">
+                        <li v-for="(   { link, title, id }   ) in    nav   " :key="id">
                             <a :href="link"
                                 class="block py-2 pl-3 pr-4 text-base font-semibold text-gray-200 transition-all link md:text-netralGrayishViolet md:p-0 hover:text-gray-100 md:hover:text-netralVeryDarkViolet"
                                 aria-current="page">

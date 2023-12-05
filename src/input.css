@@ -17,6 +17,22 @@
     .listNav {
         @apply hidden items-center w-full mx-4 mt-4 rounded-lg bg-primaryDarkViolet md:bg-inherit md:backdrop-blur-0 md:flex md:w-auto md:order-1 md:rounded-none md:mx-0
     }
+
+    .hamburgerNav {
+        @apply bg-netralGrayishViolet transition-all w-[30px] h-1
+    }
+
+    .hamburgerTop {
+        @apply bg-netralGrayishViolet transition-all w-[30px] h-1 rotate-45 origin-bottom-left
+    }
+
+    .hamburgerMid {
+        @apply bg-netralGrayishViolet transition-all w-[30px] h-1 scale-0 origin-center
+    }
+
+    .hamburgerBottom {
+        @apply bg-netralGrayishViolet transition-all w-[30px] h-1 -rotate-45 origin-top-right
+    }
 }
 
 .resShort {
