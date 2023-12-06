@@ -28,8 +28,9 @@ const hamburger = ref(true)
             <div
                 class="fixed container backdrop-blur-md w-[95%] z-[999]  mx-auto flex flex-wrap items-center md:justify-between justify-around rounded-xl pb-8 lg:w-[98%]">
                 <a href="#beranda" class="flex">
-                    <span class="self-center pl-4 text-4xl font-semibold whitespace-nowrap text-primaryDarkViolet">{{ title
-                    }}</span>
+                    <span class="self-center pl-4 text-4xl font-semibold whitespace-nowrap text-primaryDarkViolet">
+                        {{ title }}
+                    </span>
                 </a>
                 <!-- btn-logout -->
                 <div class="flex md:order-2">
