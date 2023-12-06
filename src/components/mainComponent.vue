@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, toRefs, ref, watch, onMounted } from 'vue'
+import { reactive, toRefs, ref, } from 'vue'
 import MainFigure from './mainFigure.vue'
 import cardText from './cardText.vue'
 import cardsFigure from './cardsFigure.vue'
@@ -10,6 +10,7 @@ defineProps({
 const input = ref('')
 const result = ref([])
 const error = ref(null)
+const isLoading = ref(false)
 const mainText = reactive({
     cardsTitle: 'Advanced Statistics',
     cardsDescription: 'Track how your links are performing across the web with our advanced statistics dashboard.'
@@ -31,21 +32,49 @@ const footerCompany = ref([
     { id: 4, title: 'Contact', link: '#footer' },
 ])
 const { cardsTitle, cardsDescription } = toRefs(mainText)
-// fetch api data
-const newUrl = async () => {
+// watch(input, newUrl)
+// fetch api and form handlers
+const shortenUrl = async (url) => {
+    const apiUrl = import.meta.env.VITE_API_URL
+    const apiKey = import.meta.env.VITE_API_KEY
+    const requestData = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            api_token: apiKey,
+            url: url
+        })
+    }
     try {
-        const response = await fetch(`https://cleanuri.com/api/v1/shorten?=url${input.value}`)
-        if (!response.ok) {
-            throw new Error(`${response.status}`)
-        }
-        console.log(result.value)
-        result.value = await response.json()
+        const response = await fetch(apiUrl, requestData)
+        const data = await response.json()
+        result.value.push(data)
     } catch (err) {
-        error.value = err
-        console.log(error.value)
+        error.value = err.message
+        throw new Error(error)
     }
 }
-// watch(input, newUrl)
+// fetch api data
+const newUrl = async () => {
+    const shortenedUrl = await shortenUrl(input.value)
+    return shortenedUrl
+
+}
+// copy
+const copyUrl = async () => {
+    try {
+
+        let { data: { tiny_url } } = result.value[0]
+        await navigator.clipboard.writeText(tiny_url)
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
 </script>
 <template>
     <main class="container">
@@ -94,7 +123,6 @@ const newUrl = async () => {
                                 <input type="text" name="text" v-model="input" class="bg-white border border-white text-netralGray w-full text-lg rounded-lg inline-block  p-2.5
                                focus:border  focus:border-secondaryRed focus:ring-2 focus:ring-secondaryRed "
                                     placeholder="Shorten a link here..." required="">
-
                             </div>
                             <!-- submit -->
                             <div class="lg:w-[15%] w-full">
@@ -111,9 +139,34 @@ const newUrl = async () => {
         <!-- end shortLink -->
         <div class="mt-56 bg-neutral-200">
             <div class="container pt-20">
-                <!-- result -->
-                <div v-for="post in result" :key="post.id" class="result ">
-                    {{post}}
+                <!-- result wrapper -->
+                <div class="" v-if="isLoading">
+                    Loading...
+                </div>
+                <div class="result" v-else>
+
+                    <div class="flex flex-col items-center" v-for="({ data: { tiny_url, url }, id }) in result" :key="id">
+                        <div class="max-w-xs lg:max-w-7xl ">
+                            <div
+                                class="flex flex-col items-center justify-center px-4 py-8 mt-4 bg-white rounded-md lg:flex-row lg:justify-between lg:w-[1024px]">
+                                <!-- Wrapper old url -->
+                                <div class="w-full lg:w-[60%]">
+                                    <div class="truncate">
+                                        {{ tiny_url }}
+                                    </div>
+                                </div>
+                                <div class="w-full pt-4 lg:w-[25%] lg:pt-0">
+                                    <p class="text-xs text-primaryCyan ">{{ url }}</p>
+                                </div>
+                                <div class="w-full pt-4 lg:w-[15%] lg:pt-0">
+                                    <button @click="copyUrl"
+                                        class="w-full px-6 py-2 text-base text-center text-white rounded cursor-pointer bg-primaryCyan ">
+                                        copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- card section -->
                 <div class="flex flex-col items-center py-20 lg:items-stretch scroll-mt-14 lg:scroll-mt-10" id="blog">
