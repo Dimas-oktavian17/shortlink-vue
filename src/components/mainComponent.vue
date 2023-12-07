@@ -113,7 +113,7 @@ const newUrl = async () => {
             <div class="container pt-20">
                 <!-- result -->
                 <div v-for="post in result" :key="post.id" class="result ">
-                    {{post}}
+                    {{ post }}
                 </div>
                 <!-- card section -->
                 <div class="flex flex-col items-center py-20 lg:items-stretch scroll-mt-14 lg:scroll-mt-10" id="blog">
