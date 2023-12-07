@@ -33,20 +33,20 @@
     .hamburgerBottom {
         @apply bg-netralGrayishViolet transition-all w-[30px] h-1 -rotate-45 origin-top-right
     }
-}
 
-.resShort {
-    @apply flex flex-col items-center justify-center px-4 py-8 mt-4 bg-white rounded-md lg:flex-row lg:justify-around;
-}
+    .resShort {
+        @apply flex flex-col items-center justify-center px-4 py-8 mt-4 bg-white rounded-md lg:flex-row lg:justify-around;
+    }
 
-.resBoxOne {
-    @apply w-full lg:w-[65%] flex flex-col lg:flex-row justify-center lg:justify-between items-center;
-}
+    .resBoxOne {
+        @apply w-full lg:w-[65%] flex flex-col lg:flex-row justify-center lg:justify-between items-center;
+    }
 
-.resBoxTwo {
-    @apply w-full lg:w-[35%] flex flex-col lg:flex-row justify-center lg:justify-between items-center pt-4 lg:pt-0;
-}
+    .resBoxTwo {
+        @apply w-full lg:w-[35%] flex flex-col lg:flex-row justify-center lg:justify-between items-center pt-4 lg:pt-0;
+    }
 
-* {
-    @apply scroll-smooth;
+    * {
+        @apply scroll-smooth;
+    }
 }
