@@ -7,7 +7,9 @@
     "css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "coverage": "vitest run --coverage",
+     "test": "vitest"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
+    "@vitest/coverage-v8": "^1.0.2",
     "@vue/test-utils": "^2.4.3",
     "eslint": "^8.54.0",
     "eslint-plugin-vue": "^9.19.2",
