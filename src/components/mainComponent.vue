@@ -51,6 +51,7 @@ const shortenUrl = async (url) => {
         const response = await fetch(apiUrl, requestData)
         const data = await response.json()
         result.value.push(data)
+        console.log(result)
     } catch (err) {
         error.value = err.message
         throw new Error(error)
@@ -126,7 +127,7 @@ const copyUrl = async () => {
                             </div>
                             <!-- submit -->
                             <div class="lg:w-[15%] w-full">
-                                <button type="submit" class="w-full text-white bg-primaryCyan font-medium rounded-lg text-lg px-5 py-2.5 text-center 
+                                <button type="submit" class="btn-submit w-full text-white bg-primaryCyan font-medium rounded-lg text-lg px-5 py-2.5 text-center 
                                       ">
                                     Shorten It!
                                 </button>
@@ -300,8 +301,8 @@ const copyUrl = async () => {
                                 class="pb-8 text-lg font-semibold leading-tight text-white transition-all cursor-pointer opacity-90 hover:text-primaryCyan">
                                 Features
                             </li>
-                            <li v-for="({ title, link, id }) in footerFeatures" :key="id"
-                                class="pb-4 text-base font-normal leading-tight transition-all text-netralGray hover:text-primaryCyan">
+                            <li v-for="({ link, title, id }) in footerFeatures" :key="id"
+                                class="pb-4 text-base font-normal leading-tight transition-all footerFeatures text-netralGray hover:text-primaryCyan">
                                 <a :href="link">
                                     {{ title }}
                                 </a>
@@ -319,7 +320,7 @@ const copyUrl = async () => {
                                 Resources
                             </li>
                             <li v-for="({ title, link, id }) in footerResources" :key="id"
-                                class="pb-4 text-base font-normal leading-tight transition-all text-netralGray hover:text-primaryCyan">
+                                class="pb-4 text-base font-normal leading-tight transition-all footerResources text-netralGray hover:text-primaryCyan">
                                 <a :href="link">
                                     {{ title }}
                                 </a>
@@ -336,7 +337,7 @@ const copyUrl = async () => {
                                 Company
                             </li>
                             <li v-for="({ title, link, id }) in footerCompany" :key="id"
-                                class="pb-4 text-base font-normal leading-tight transition-all text-netralGray hover:text-primaryCyan">
+                                class="pb-4 text-base font-normal leading-tight transition-all footerCompany text-netralGray hover:text-primaryCyan">
                                 <a :href="link">
                                     {{ title }}
                                 </a>
