@@ -121,7 +121,7 @@ const copyUrl = async () => {
                         <div class="space-y-3 lg:space-y-0 lg:flex lg:flex-row lg:justify-between">
                             <!-- input -->
                             <div class="w-full lg:w-4/5">
-                                <input type="text" name="text" v-model="input" class="bg-white border border-white text-netralGray w-full text-lg rounded-lg inline-block  p-2.5
+                                <input type="url" name="url" v-model="input" class="bg-white border border-white text-netralGray w-full text-lg rounded-lg inline-block  p-2.5
                                focus:border  focus:border-secondaryRed focus:ring-2 focus:ring-secondaryRed "
                                     placeholder="Shorten a link here..." required="">
                             </div>
