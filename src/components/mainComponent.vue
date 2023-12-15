@@ -3,6 +3,7 @@ import { reactive, toRefs, ref, } from 'vue'
 import MainFigure from './mainFigure.vue'
 import cardText from './cardText.vue'
 import cardsFigure from './cardsFigure.vue'
+
 defineProps({
     title: String
 })
@@ -10,7 +11,7 @@ defineProps({
 const input = ref('')
 const result = ref([])
 const error = ref(null)
-const isLoading = ref(false)
+
 const mainText = reactive({
     cardsTitle: 'Advanced Statistics',
     cardsDescription: 'Track how your links are performing across the web with our advanced statistics dashboard.'
@@ -51,7 +52,6 @@ const shortenUrl = async (url) => {
         const response = await fetch(apiUrl, requestData)
         const data = await response.json()
         result.value.push(data)
-        console.log(result)
     } catch (err) {
         error.value = err.message
         throw new Error(error)
@@ -61,7 +61,6 @@ const shortenUrl = async (url) => {
 const newUrl = async () => {
     const shortenedUrl = await shortenUrl(input.value)
     return shortenedUrl
-
 }
 // copy
 const copyUrl = async () => {
@@ -141,11 +140,8 @@ const copyUrl = async () => {
         <div class="mt-56 bg-neutral-200">
             <div class="container pt-20">
                 <!-- result wrapper -->
-                <div class="" v-if="isLoading">
-                    Loading...
-                </div>
-                <div class="result" v-else>
 
+                <div class="result" v-auto-animate>
                     <div class="flex flex-col items-center" v-for="({ data: { tiny_url, url }, id }) in result" :key="id">
                         <div class="max-w-xs lg:max-w-7xl ">
                             <div
@@ -169,6 +165,7 @@ const copyUrl = async () => {
                         </div>
                     </div>
                 </div>
+
                 <!-- card section -->
                 <div class="flex flex-col items-center py-20 lg:items-stretch scroll-mt-14 lg:scroll-mt-10" id="blog">
                     <!-- deskripsi -->
