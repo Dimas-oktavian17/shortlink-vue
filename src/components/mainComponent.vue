@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, toRefs, ref, } from 'vue'
+import axios from 'axios'
 import MainFigure from './mainFigure.vue'
 import cardText from './cardText.vue'
 import cardsFigure from './cardsFigure.vue'
@@ -39,19 +40,12 @@ const shortenUrl = async (url) => {
     const apiUrl = import.meta.env.VITE_API_URL
     const apiKey = import.meta.env.VITE_API_KEY
     const requestData = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            api_token: apiKey,
-            url: url
-        })
+        api_token: apiKey,
+        url: url
     }
     try {
-        const response = await fetch(apiUrl, requestData)
-        const data = await response.json()
-        result.value.push(data)
+        const response = await axios.post(apiUrl, requestData)
+        result.value.push(response.data)
     } catch (err) {
         error.value = err.message
         throw new Error(error)
@@ -65,10 +59,8 @@ const newUrl = async () => {
 // copy
 const copyUrl = async () => {
     try {
-
         let { data: { tiny_url } } = result.value[0]
         await navigator.clipboard.writeText(tiny_url)
-
     } catch (error) {
         console.error(error)
     }
