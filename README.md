@@ -11,6 +11,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 - [Vitest](https://vitest.dev/) + V8 + [Vue Test Utils as unit test](https://test-utils.vuejs.org/)
 - [Tiny url as api service](https://tinyurl.com/app/dev)
 - [Msw as testing mocking api](https://mswjs.io/)
+- [Axios as fetch api](https://axios-http.com/)
 - [TailwindCss as styling](https://tailwindcss.com/)
 - [Design](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G/hub)
 
